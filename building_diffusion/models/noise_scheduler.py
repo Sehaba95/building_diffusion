@@ -49,7 +49,7 @@ class NoiseScheduler(torch.nn.Module):
         # Lower bound on the betas, from DiGress (https://arxiv.org/abs/2209.14734), where it is computed
         # for the edges of a graph: with p = 1 - 1 / num_edge_classes (2 edge classes: edge / no edge) and
         # num_edges = n (n - 1) / 2 node pairs, a beta of updates_per_graph / (p * num_edges) changes about
-        # updates_per_graph edges per graph and step. It is kept unchanged here, although only node labels are noised.
+        # updates_per_graph edges per graph and step.
         p = 1 / 2       # 1 - 1 / num_edge_classes 
         num_edges = average_num_nodes * (average_num_nodes - 1) / 2
 

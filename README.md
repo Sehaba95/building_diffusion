@@ -2,6 +2,10 @@
 
 Official implementation of **Building-Diffusion: Graph Discrete Diffusion Model for Architectural Volumetric Design Generation**.
 
+<p align="center">
+  <img src="assets/building_diffusion_sampling.gif" alt="Building-Diffusion generating a 3D building layout">
+</p>
+
 📄 **Paper:** [CVPR 2026 Workshop Paper](https://openaccess.thecvf.com/content/CVPR2026W/CV4AEC/html/Sehaba_Building-Diffusion_Graph_Discrete_Diffusion_Model_For_Architectural_Volumetric_Design_Generation_CVPRW_2026_paper.html)
 
 🏆 Accepted at the **CVPR 2026 Workshop on Computer Vision for Architecture, Engineering, and Construction (CV4AEC)**.
@@ -164,15 +168,6 @@ blender --python tools/blender/program_graph.py -- Data/6types-raw_data/6types-r
 ```bash
 ruff check .
 ```
-
-## Notes
-
-These behaviours of the original code are kept unchanged, so that the results remain reproducible:
-
-- The test run at the end of diffusion training reports an accuracy that counts every voxel twice (it is half the real value).
-- During diffusion training, the frozen SSL encoder is in training mode: its dropout is active and its BatchNorm statistics are updated (its weights are not trained). The updated statistics are saved in the diffusion checkpoint.
-- The FGW distance is computed with `alpha=0` and the same voxel adjacency for both graphs, so it only compares the node features (program labels and floors).
-- The lower bound on the noise schedule's betas comes from DiGress, where it is computed for graph edges (see `NoiseScheduler.cosine_beta_schedule_discrete`).
 
 ## License
 

@@ -44,7 +44,7 @@ class Encoder(nn.Module):
             else:
                 self.previous_hidden_channel = hidden_channel
 
-        # Add another layer that have the same size of the last layer 
+        # Last message-passing layer: always concat=False (heads averaged), so the node embeddings have embedding_size features
         self.encoder_convs.append(ConvBlock(self.previous_hidden_channel, embedding_size, layer_name=layer_name, heads=heads, dropout=dropout, concat=False))
 
     def forward(self, x, edge_index):

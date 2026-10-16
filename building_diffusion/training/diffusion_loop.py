@@ -164,9 +164,6 @@ def complete_test(test_data_loader, model, device, ce_loss, noise_scheduler, tim
             # Only save the outputs of the first batch
             save_outputs = False
 
-            # Known issue, kept for reproducibility: nodes are counted twice, which halves the reported accuracy
-            num_nodes_test += predicted_graphs.size(0)
-
             # Compute TPR and FAR for predicted graph
             predicted_labels = predicted_graphs.argmax(dim=1)
             pred_far, pred_tpr = compute_far_tpr(file_index, data.voxel_feature_batch.max().item() + 1, predicted_labels, batch=data.voxel_feature_batch, device=device, raw_dir=raw_dir)

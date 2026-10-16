@@ -12,7 +12,7 @@ model:
   hidden_channels: [256, 256, 256, 256, 256]  # The last value is the embedding size (64, 128 or 256)
   out_channels: 64
   heads: 8
-  concat: false
+  concat: true  # Concatenate the attention heads of the hidden layers (the last layer always averages them)
   dropout: 0.5
 
 train:

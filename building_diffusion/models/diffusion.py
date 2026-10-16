@@ -102,6 +102,12 @@ class BuildingDiffusion(nn.Module):
         
         ##############################################################################################################################33
 
+    def train(self, mode=True):
+        """Set the training mode, except for the frozen SSL encoder, which stays in eval mode (no dropout, fixed BatchNorm statistics)."""
+        super().train(mode)
+        self.ssl_model.eval()
+        return self
+
     def forward(self, x, edge_index, batch, timestep, program_graph, floor_pe=None):
         """
         x: voxel features + noisy labels (N_voxel x 14), edge_index: voxel edges (2 x E), batch: graph index of
