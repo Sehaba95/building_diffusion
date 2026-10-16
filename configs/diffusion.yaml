@@ -1,0 +1,30 @@
+# Building-Diffusion model
+# These settings train the run used in the README (dm_<date>_GAT_256_3_500_1000):
+# GAT layers, hidden size 256, 3 layers, 500 diffusion steps, 1000 epochs.
+data:
+  processed_dir: Data/6types-processed_data
+  raw_dir: Data/6types-raw_data/6types-raw_data
+  train_size: 96000
+  test_size: 24000
+
+model:
+  layer_name: GAT
+  in_channels: 14  # Dimension, coordinates, weight, noisy label (6 classes + unassigned)
+  encoding: 256
+  hidden_channels: [256, 256, 256]  # The first value selects the SSL embedding size (64, 128 or 256)
+  out_channels: 256
+  heads: 8
+  concat: false
+  residual: true
+  floor_pos_enc: true
+  dropout: 0.5
+  timestep_embed_size: 256
+  diffusion_steps: 500
+  ssl_checkpoint: null  # Path to a trained SSL model; null uses the default checkpoint for hidden_channels[0]
+
+train:
+  lr: 0.0002
+  epochs: 1000
+  batch_size: 32
+  seed: 0
+  deterministic: false  # true: identical GPU runs, but slower and much more GPU memory

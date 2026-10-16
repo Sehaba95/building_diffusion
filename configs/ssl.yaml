@@ -1,0 +1,23 @@
+# Self-supervised program-graph encoder (trained first; it conditions the diffusion model)
+data:
+  processed_dir: Data/6types-processed_data
+  raw_dir: Data/6types-raw_data/6types-raw_data
+  train_size: 96000
+  test_size: 24000
+
+model:
+  layer_name: GATv2
+  in_channels: 19  # 6x program class, 11x floor, 1x TPR, 1x FAR
+  encoding: 64
+  hidden_channels: [256, 256, 256, 256, 256]  # The last value is the embedding size (64, 128 or 256)
+  out_channels: 64
+  heads: 8
+  concat: false
+  dropout: 0.5
+
+train:
+  lr: 0.001
+  epochs: 100
+  batch_size: 8
+  seed: 0
+  deterministic: false  # true: identical GPU runs, but slower and much more GPU memory

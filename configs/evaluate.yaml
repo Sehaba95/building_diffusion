@@ -1,0 +1,14 @@
+# Evaluation of a trained diffusion run (scripts/evaluate.py --run runs/<id>)
+# The model settings are read from runs/<id>/config.yaml
+data:
+  processed_dir: Data/6types-processed_data
+  raw_dir: Data/6types-raw_data/6types-raw_data
+  train_size: 96000
+  test_size: 24000
+
+eval:
+  num_samples: 1
+  seed: 1
+  deterministic: false  # true: identical GPU runs, but slower
+  split_batch_size: 32
+  layer_name: null  # Only for old runs whose log does not contain the layer name

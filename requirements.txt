@@ -1,0 +1,16 @@
+# Tested with Python 3.11, PyTorch 2.1.0 (CUDA 11.8), and PyTorch Geometric 2.6.1.
+--extra-index-url https://download.pytorch.org/whl/cu118
+torch==2.1.0
+torch_geometric==2.6.1
+numpy<2
+scikit-learn
+matplotlib
+tqdm
+tensorboardX
+pyyaml
+
+# Evaluation only (Fused Gromov-Wasserstein distance)
+POT
+
+# Development only (lint: ruff check .)
+ruff

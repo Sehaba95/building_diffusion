@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "building_diffusion"
+version = "0.1.0"
+description = "Building-Diffusion: Graph Discrete Diffusion Model for Architectural Volumetric Design Generation"
+readme = "README.md"
+license = { file = "LICENSE" }
+requires-python = ">=3.10"
+# Dependencies are pinned in requirements.txt (PyTorch needs a CUDA-specific index URL).
+
+[tool.setuptools.packages.find]
+include = ["building_diffusion*"]
+
+[tool.ruff]
+target-version = "py310"
+extend-exclude = ["Data", "runs"]
+
+[tool.ruff.lint]
+# ruff defaults (pyflakes and pycodestyle errors) + import sorting
+select = ["E4", "E7", "E9", "F", "I"]
+
+[tool.ruff.lint.isort]
+known-first-party = ["building_diffusion"]

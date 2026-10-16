@@ -1,0 +1,16 @@
+# Datasets (large, downloaded/processed separately)
+Data/6types-*
+
+# Training runs and checkpoints
+runs/
+outputs/
+outputs_*/
+
+# Python / Jupyter caches
+__pycache__/
+.ipynb_checkpoints/
+*.ipynb
+*.egg-info/
+build/
+
+CLAUDE.md
